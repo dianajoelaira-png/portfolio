@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diana Joelaira | About & Portfolio Details</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: #0d0e12;
+      color: #fff;
+      line-height: 1.6;
+      overflow-x: hidden;
+      transition: background-color 0.4s ease, color 0.4s ease;
+    }
+
+    #tsparticles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 1;
+      pointer-events: auto;
+    }
+
+    header, .about-hero, .section, footer {
+      position: relative;
+      z-index: 2;
+    }
+
+    header {
+      background: rgba(13, 14, 18, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+      border-bottom: 1px solid rgba(224, 159, 62, 0.15);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar {
+      max-width: 1200px;
+      margin: auto;
+      padding: 18px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: 700;
+      color: #e09f3e;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #e0e0e0;
+      font-weight: 500;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 0;
+      height: 3px;
+      background: #e09f3e;
+      border-radius: 10px;
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      width: 100%;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #e09f3e;
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    #darkModeBtn,
+    .menu-btn {
+      border: 1px solid rgba(224, 159, 62, 0.4);
+      background: rgba(224, 159, 62, 0.15);
+      color: #e09f3e;
+      padding: 8px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    #darkModeBtn:hover,
+    .menu-btn:hover {
+      background: #e09f3e;
+      color: #0d0e12;
+    }
+
+    .menu-btn {
+      display: none;
+    }
+
+    .about-hero {
+      padding: 90px 20px 40px;
+      text-align: center;
+    }
+
+    .hero-content {
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .tag {
+      display: inline-block;
+      background: rgba(224, 159, 62, 0.12);
+      color: #e09f3e;
+      border: 1px solid rgba(224, 159, 62, 0.3);
+      padding: 8px 18px;
+      border-radius: 30px;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 18px;
+      backdrop-filter: blur(8px);
+    }
+
+    .about-hero h1 {
+      font-size: 42px;
+      margin-bottom: 18px;
+      font-weight: 700;
+    }
+
+    .about-hero h1 span {
+      color: #e09f3e;
+    }
+
+    .about-hero p {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 16px;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .section h2 {
+      font-size: 34px;
+      color: #e09f3e;
+      margin-bottom: 15px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .section-intro {
+      max-width: 800px;
+      margin: 0 auto 40px;
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 16px;
+    }
+
+    .about-grid, .card-container, .grid-skills {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .about-card, .card, .skill-card {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(224, 159, 62, 0.18);
+      border-radius: 20px;
+      padding: 25px 18px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      transition: all 0.4s ease;
+    }
+
+    .about-card:hover, .card:hover, .skill-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(224, 159, 62, 0.5);
+      box-shadow: 0 15px 35px rgba(224, 159, 62, 0.15);
+    }
+
+    .card-icon {
+      width: 60px;
+      height: 60px;
+      background: rgba(224, 159, 62, 0.12);
+      color: #e09f3e;
+      border: 1px solid rgba(224, 159, 62, 0.3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+      font-size: 24px;
+    }
+
+    .about-card h3, .skill-card h3 {
+      color: #fff;
+      margin-bottom: 10px;
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .card h3 {
+      color: #fff;
+      margin-bottom: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 1.35;
+      letter-spacing: 0.2px;
+    }
+
+    .about-card p, .card p, .skill-card p {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 13.5px;
+      line-height: 1.5;
+    }
+
+    .card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 12px;
+      border: 1px solid rgba(224, 159, 62, 0.2);
+    }
+
+    .education-wrapper {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+      text-align: left;
+    }
+
+    .education-card {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(224, 159, 62, 0.25);
+      border-top: 5px solid #e09f3e;
+      padding: 35px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    .education-card .year {
+      display: inline-block;
+      background: rgba(224, 159, 62, 0.15);
+      color: #e09f3e;
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+
+    .education-card h3 {
+      color: #fff;
+      font-size: 22px;
+      margin-bottom: 5px;
+    }
+
+    .education-card h4 {
+      color: #e09f3e;
+      font-size: 15px;
+      margin-bottom: 15px;
+    }
+
+    .cgpa-box {
+      margin-top: 18px;
+      background: rgba(255, 255, 255, 0.04);
+      padding: 12px 18px;
+      border-radius: 12px;
+      border: 1px solid rgba(224, 159, 62, 0.2);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .cgpa-box strong {
+      color: #e09f3e;
+      font-size: 20px;
+    }
+
+    .exp-container {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    .exp-card {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(224, 159, 62, 0.25);
+      border-radius: 20px;
+      padding: 35px;
+      text-align: left;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding-bottom: 15px;
+      margin-bottom: 20px;
+    }
+
+    .role {
+      font-size: 22px;
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .company {
+      color: #e09f3e;
+      font-weight: 500;
+      font-size: 15px;
+      margin-top: 4px;
+    }
+
+    .exp-subheading {
+      color: #e09f3e;
+      font-size: 16px;
+      font-weight: 600;
+      margin: 15px 0 8px 0;
+    }
+
+    .exp-body ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .exp-body li {
+      position: relative;
+      padding-left: 25px;
+      margin-bottom: 12px;
+      color: rgba(255,255,255,0.85);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .exp-body li::before {
+      content: "▹";
+      position: absolute;
+      left: 0;
+      color: #e09f3e;
+      font-size: 18px;
+    }
+
+    .skill-card {
+      text-align: left;
+    }
+
+    .skill-card h3 {
+      color: #e09f3e;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .tag-item {
+      background: rgba(224, 159, 62, 0.12);
+      border: 1px solid rgba(224, 159, 62, 0.25);
+      color: #fff;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      transition: all 0.3s ease;
+    }
+
+    .tag-item:hover {
+      background: #e09f3e;
+      color: #0d0e12;
+      transform: translateY(-2px);
+    }
+
+    .act-card {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(224, 159, 62, 0.2);
+      border-radius: 20px;
+      padding: 35px;
+      text-align: left;
+    }
+
+    .act-card h3 {
+      color: #e09f3e;
+      font-size: 22px;
+      margin-bottom: 12px;
+    }
+
+    .act-card ul {
+      padding-left: 20px;
+      color: rgba(255,255,255,0.8);
+      font-size: 14px;
+      margin-bottom: 25px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 14px;
+      border: 1px solid rgba(224, 159, 62, 0.25);
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-grid img:hover {
+      transform: scale(1.03);
+    }
+
+    .read-more-btn {
+      display: none;
+      background: transparent;
+      border: none;
+      color: #e09f3e;
+      font-weight: 600;
+      font-size: 12px;
+      margin-top: 6px;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      background: rgba(13, 14, 18, 0.95);
+      border-top: 1px solid rgba(224, 159, 62, 0.15);
+      color: rgba(255, 255, 255, 0.6);
+      padding: 25px;
+      margin-top: 60px;
+      font-size: 14px;
+    }
+
+    /* ====================================================
+       LIGHT MODE STYLING OVERRIDES
+       ==================================================== */
+    body.light-mode {
+      background-color: #f4f5f7 !important;
+      color: #1a1a1a !important;
+    }
+
+    body.light-mode header {
+      background: rgba(255, 255, 255, 0.85) !important;
+      border-bottom: 1px solid rgba(224, 159, 62, 0.3) !important;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
+    }
+
+    body.light-mode .nav-links a {
+      color: #333 !important;
+    }
+
+    body.light-mode .nav-links a.active,
+    body.light-mode .nav-links a:hover {
+      color: #e09f3e !important;
+    }
+
+    body.light-mode .about-card,
+    body.light-mode .card,
+    body.light-mode .skill-card,
+    body.light-mode .education-card,
+    body.light-mode .exp-card,
+    body.light-mode .act-card,
+    body.light-mode .cgpa-box {
+      background: rgba(255, 255, 255, 0.85) !important;
+      border-color: rgba(224, 159, 62, 0.35) !important;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06) !important;
+    }
+
+    body.light-mode .about-hero h1,
+    body.light-mode .about-card h3,
+    body.light-mode .card h3,
+    body.light-mode .education-card h3,
+    body.light-mode .role,
+    body.light-mode .act-card h3,
+    body.light-mode .exp-body li {
+      color: #111 !important;
+    }
+
+    body.light-mode .about-hero p,
+    body.light-mode .section-intro,
+    body.light-mode .about-card p,
+    body.light-mode .card p,
+    body.light-mode .skill-card p,
+    body.light-mode .education-card p,
+    body.light-mode .act-card ul,
+    body.light-mode .act-card li {
+      color: #444 !important;
+    }
+
+    body.light-mode .tag-item {
+      background: rgba(224, 159, 62, 0.15) !important;
+      color: #111 !important;
+    }
+
+    body.light-mode footer {
+      background: rgba(240, 240, 240, 0.95) !important;
+      color: #666 !important;
+    }
+
+    /* MEDIA QUERIES */
+    @media (max-width: 992px) {
+      .education-wrapper {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .menu-btn {
+        display: block;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        background: rgba(13, 14, 18, 0.95);
+        backdrop-filter: blur(16px);
+        border: 1px solid rgba(224, 159, 62, 0.3);
+        width: 220px;
+        flex-direction: column;
+        padding: 20px;
+        border-radius: 14px;
+        display: none;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .about-grid, .card-container, .grid-skills {
+        display: flex !important;
+        flex-direction: row !important;
+        overflow-x: auto !important;
+        scroll-snap-type: x mandatory;
+        gap: 15px !important;
+        padding-bottom: 18px;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .about-card, .card, .skill-card {
+        flex: 0 0 80% !important;
+        min-width: 80% !important;
+        scroll-snap-align: center;
+        padding: 20px 15px !important;
+      }
+
+      .card h3 {
+        font-size: 15px !important;
+        margin-bottom: 6px !important;
+      }
+
+      .card img {
+        height: 140px !important;
+      }
+
+      .expandable-text {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      .expandable-text.expanded {
+        display: block !important;
+      }
+
+      .read-more-btn {
+        display: inline-block;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .exp-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div id="tsparticles"></div>
+
+<header>
+  <nav class="navbar">
+    <div class="logo">Diana Joelaira</div>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <button id="darkModeBtn">🌙</button>
+      <button class="menu-btn" id="menuBtn">☰</button>
+    </div>
+  </nav>
+</header>
+
+<section class="about-hero">
+  <div class="hero-content">
+    <div class="tag"><i class="fas fa-user"></i> About Me</div>
+    <h1>Driven by <span>Design & Functional Innovation</span></h1>
+    <p>
+      While I have a foundational understanding of programming languages, my core passion lies in 
+      <strong>UI/UX Design and System Analysis</strong>. I thrive on creating clean, intuitive, and visually engaging digital solutions.
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <h2>What Defines Me</h2>
+  <p class="section-intro">Focusing on creative design, user satisfaction, and hardware-software interaction.</p>
+
+  <div class="about-grid">
+    <div class="about-card">
+      <div class="card-icon"><i class="fas fa-palette"></i></div>
+      <h3>UI/UX & Visual Design</h3>
+      <p class="expandable-text">Passionate about crafting clean, modern interfaces with high visual appeal, intuitive user flows, and practical usability.</p>
+      <button class="read-more-btn" onclick="toggleReadMore(this)">Read More</button>
+    </div>
+
+    <div class="about-card">
+      <div class="card-icon"><i class="fas fa-microchip"></i></div>
+      <h3>IoT & Smart Solutions</h3>
+      <p class="expandable-text">Interested in connecting microcontrollers with modern cloud databases to build functional physical-digital hardware systems.</p>
+      <button class="read-more-btn" onclick="toggleReadMore(this)">Read More</button>
+    </div>
+
+    <div class="about-card">
+      <div class="card-icon"><i class="fas fa-sitemap"></i></div>
+      <h3>System Modeling</h3>
+      <p class="expandable-text">Adept at organizing business logic, user requirement workflows, and structural software design using standard SDLC methodology.</p>
+      <button class="read-more-btn" onclick="toggleReadMore(this)">Read More</button>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Education Background</h2>
+  <p class="section-intro">My academic pathway and credentials shaping my expertise in computer science.</p>
+
+  <div class="education-wrapper">
+    <div class="education-card">
+      <span class="year">Current Study</span>
+      <h3>Universiti Sultan Zainal Abidin (UniSZA)</h3>
+      <h4>Bachelor of Computer Science (Software Development) with Honours</h4>
+      <p>Focused on software development, web technology, database systems, system analysis, and project-based learning.</p>
+      <div class="cgpa-box">
+        <span>Current CGPA</span>
+        <strong>3.68 / 4.00</strong>
+      </div>
+    </div>
+
+    <div class="education-card">
+      <span class="year">Completed</span>
+      <h3>Politeknik Besut Terengganu</h3>
+      <h4>Diploma in Information Technology (Digital Technology)</h4>
+      <p>Built a strong foundation in programming, web development, database systems, and networking.</p>
+      <div class="cgpa-box">
+        <span>Diploma CGPA</span>
+        <strong>3.87 / 4.00</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Featured Projects</h2>
+  <p class="section-intro">Here are all of my developed projects, highlighting my experience in web application development, IoT systems, and UI/UX design.</p>
+
+  <div class="card-container">
+    <div class="card">
+      <img src="images/project1.jpeg" alt="iSleepWell Online Shop Platform">
+      <h3>iSleepWell E-Commerce Platform</h3>
+      <p class="expandable-text">A web-based online shop platform allowing users to browse and purchase sleep-related products in a simple, responsive, and user-friendly web interface.</p>
+      <button class="read-more-btn" onclick="toggleReadMore(this)">Read More</button>
+    </div>
+
+    <div class="card">
+      <img src="images/project2.jpeg" alt="I-FitShoes AR Recommendation System">
+      <h3>I-FitShoes AR-Based Customized Shoe Recommendation System</h3>
+      <p class="expandable-text">A web-based footwear recommendation system using rule-based algorithms to suggest customized shoes tailored for users with specific foot health conditions.</p>
+      <button class="read-more-btn" onclick="toggleReadMore(this)">Read More</button>
+    </div>
+
+    <div class="card">
+      <img src="images/project3.jpeg" alt="Beauty Touch Spa System">
+      <h3>Beauty Touch Spa Booking System</h3>
+      <p class="expandable-text">A clean, responsive online appointment management system developed to streamline customer spa service bookings and schedule tracking.</p>
+      <button class="read-more-btn" onclick="toggleReadMore(this)">Read More</button>
+    </div>
+
+    <div class="card">
+      <img src="images/project4.png" alt="uCar Online Car Rental System">
+      <h3>uCar Rental Booking System</h3>
+      <p class="expandable-text">A centralized web-based car rental platform serving Besut, Kota Bharu, and Setiu regions—enabling real-time booking, vehicle search, and standardized pricing for customers, owners, and admins.</p>
+      <button class="read-more-btn" onclick="toggleReadMore(this)">Read More</button>
+    </div>
+
+    <div class="card">
+      <img src="images/project5.png" alt="E-Kontrak System">
+      <h3>E-Kontrak (Contract Extension System)</h3>
+      <p class="expandable-text">A centralized web-based system developed for Setiausaha Kerajaan Negeri Kelantan (SUK) to digitize and streamline contract extension applications for government staff, replacing manual paper submissions with efficient inter-departmental workflows.</p>
+      <button class="read-more-btn" onclick="toggleReadMore(this)">Read More</button>
+    </div>
+
+    <div class="card">
+      <img src="images/project6.jpg" alt="IoT Smart Medicine Container Project">
+      <h3>IoT Smart Medicine Reminder</h3>
+      <p class="expandable-text">An IoT-enabled smart container built with ESP8266 microcontroller and Firebase database integration designed to remind patients to take medication on time.</p>
+      <button class="read-more-btn" onclick="toggleReadMore(this)">Read More</button>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Work Experience</h2>
+  <p class="section-intro">Key projects, system maintenance, and record management handled during my 6-month industrial training placement.</p>
+
+  <div class="exp-container">
+    <div class="exp-card">
+      <div class="exp-header">
+        <div>
+          <div class="role">Frontend / Web Developer Intern</div>
+          <div class="company"><i class="fas fa-building"></i> Setiausaha Kerajaan Negeri Kelantan (SUK)</div>
+        </div>
+        <span class="tag">Jan 2023 – Jun 2023</span>
+      </div>
+
+      <div class="exp-body">
+        <div class="exp-subheading">1. Maintenance & Continuation of E-Kontrak (Sistem Penyambungan Kontrak)</div>
+        <ul>
+          <li>Maintained and enhanced existing frontend interfaces using HTML, CSS, PHP, MySQL, Laravel, and Bootstrap on Laragon local development environment.</li>
+          <li>Contributed to centralizing government contract extension requests, transitioning manual physical submissions into a digital workflow to reduce inter-departmental approval delays.</li>
+        </ul>
+
+        <div class="exp-subheading">2. File Management & Record Digitization (Sistem Excel / PTFAIL)</div>
+        <ul>
+          <li>Digitized employee records into the system, replacing manual paper filing and cross-referencing entries against Excel logs to verify historical dates.</li>
+          <li>Assisted in hybrid file management (50% online / 50% physical) by tracking check-ins/check-outs for staff files across appointments (Tetap, Kontrak, JBC, MySTEP).</li>
+          <li>Handled physical file maintenance including cover repairs, volume splitting for files exceeding 100 entries, and archiving files (Retirement, Resignation, Medical, Transfers).</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>What I Can Give You</h2>
+  <p class="section-intro">A comprehensive breakdown of all technical tools, design applications, and extra skills I have explored throughout coursework, assignments, and practical projects.</p>
+
+  <div class="grid-skills">
+    <div class="skill-card">
+      <h3><i class="fas fa-brush"></i> UI/UX & Creative Design</h3>
+      <p style="font-size: 13px; color: rgba(255,255,255,0.7); margin-bottom: 12px;">Strong interest in visual aesthetics, graphic editing, and user experience.</p>
+      <div class="tag-list">
+        <span class="tag-item">UI/UX Design</span>
+        <span class="tag-item">Canva</span>
+        <span class="tag-item">Adobe Photoshop</span>
+        <span class="tag-item">Adobe Animate</span>
+        <span class="tag-item">CapCut</span>
+        <span class="tag-item">3D Blender</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <h3><i class="fas fa-code"></i> Web & App Development</h3>
+      <p style="font-size: 13px; color: rgba(255,255,255,0.7); margin-bottom: 12px;">Foundational knowledge across frontend, backend, and frameworks.</p>
+      <div class="tag-list">
+        <span class="tag-item">HTML</span>
+        <span class="tag-item">CSS</span>
+        <span class="tag-item">JavaScript</span>
+        <span class="tag-item">PHP</span>
+        <span class="tag-item">C++</span>
+        <span class="tag-item">Python</span>
+        <span class="tag-item">Laravel</span>
+        <span class="tag-item">CodeIgniter 4</span>
+        <span class="tag-item">Bootstrap</span>
+        <span class="tag-item">Flutter</span>
+        <span class="tag-item">Android Studio</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <h3><i class="fas fa-database"></i> Databases, Analytics & Tools</h3>
+      <p style="font-size: 13px; color: rgba(255,255,255,0.7); margin-bottom: 12px;">Data management, analytics platforms, and development environments.</p>
+      <div class="tag-list">
+        <span class="tag-item">MySQL</span>
+        <span class="tag-item">phpMyAdmin</span>
+        <span class="tag-item">KNIME</span>
+        <span class="tag-item">Tableau</span>
+        <span class="tag-item">GitHub</span>
+        <span class="tag-item">VS Code</span>
+        <span class="tag-item">Google AI Prompting</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Honors, Certifications & Activities</h2>
+  <p class="section-intro">A showcase of my academic recognition, professional self-up-skilling, and active participation in campus activities.</p>
+
+  <div class="grid-skills" style="margin-bottom: 30px;">
+    <div class="skill-card">
+      <h3><i class="fab fa-google" style="color: #e09f3e;"></i> Google AI Prompting Certificate</h3>
+      <p style="font-size: 13.5px; color: rgba(255,255,255,0.8); margin-top: 8px;">
+        Professional certification via Coursera focusing on generative AI prompting techniques, problem-solving, and AI workflow integration.
+      </p>
+    </div>
+
+    <div class="skill-card">
+      <h3><i class="fas fa-trophy" style="color: #e09f3e;"></i> Top 3 FYP Project Award</h3>
+      <p style="font-size: 13.5px; color: rgba(255,255,255,0.8); margin-top: 8px;">
+        Recognized as one of the Top 3 Final Year Projects for outstanding effort in system development, documentation, and presentation.
+      </p>
+    </div>
+
+    <div class="skill-card">
+      <h3><i class="fas fa-star" style="color: #e09f3e;"></i> Academic Excellence & Dean's List</h3>
+      <p style="font-size: 13.5px; color: rgba(255,255,255,0.8); margin-top: 8px;">
+        Awarded <strong>Ketua Jabatan Award</strong> during Diploma and achieved <strong>Dean's List Recognition for 4 full semesters</strong>.
+      </p>
+    </div>
+  </div>
+
+  <div class="act-card">
+    <h3><i class="fas fa-hands-helping"></i> Campus Programs & Extracurricular Activities</h3>
+    <ul>
+      <li>
+        <strong>Program Tunas Siswa: Menyatu Dalam Kebersamaan (UniSZA):</strong> 
+        Committee member for Khidmat Masyarakat Club, co-organizing interactive educational and team-building activities at UniSZA for visiting students from SMK Besut.
+      </li>
+      <li>
+        <strong>Youth Celik IP: Innovating for a Better Future (National Level):</strong> 
+        Participated in the national-level innovation awareness program hosted at Politeknik Muadzam Shah, Pahang.
+      </li>
+      <li>
+        <strong>Siswapreneur Showcase & LET'S DU-IT 2020:</strong> 
+        Participated in the entrepreneurship showcase held at Bukit Keluang Beach Resort to develop pitching and business innovation skills.
+      </li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Diana Joelaira. All Rights Reserved.</p>
+</footer>
+
+<script src="js/script.js"></script>
+
+<!-- tsParticles Library CDN -->
+<script src="https://cdn.jsdelivr.net/npm/tsparticles-slim@2.12.0/tsparticles.slim.bundle.min.js"></script>
+
+<script>
+  // 1. READ MORE / READ LESS TOGGLE
+  function toggleReadMore(btn) {
+    const textElement = btn.previousElementSibling;
+    textElement.classList.toggle('expanded');
+    if (textElement.classList.contains('expanded')) {
+      btn.innerText = "Read Less";
+    } else {
+      btn.innerText = "Read More";
+    }
+  }
+
+  // 2. MOBILE MENU & DARK/LIGHT MODE TOGGLE
+  const darkModeBtn = document.getElementById("darkModeBtn");
+  const menuBtn = document.getElementById("menuBtn");
+  const navLinks = document.getElementById("navLinks");
+
+  if (menuBtn) {
+    menuBtn.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+  }
+
+  // Semak pilihan tema dalam LocalStorage
+  if (localStorage.getItem("theme") === "light") {
+    document.body.classList.add("light-mode");
+    if (darkModeBtn) darkModeBtn.innerText = "☀️";
+  }
+
+  if (darkModeBtn) {
+    darkModeBtn.addEventListener("click", () => {
+      document.body.classList.toggle("light-mode");
+
+      if (document.body.classList.contains("light-mode")) {
+        darkModeBtn.innerText = "☀️";
+        localStorage.setItem("theme", "light");
+      } else {
+        darkModeBtn.innerText = "🌙";
+        localStorage.setItem("theme", "dark");
+      }
+    });
+  }
+
+  // 3. TSPARTICLES INITIALIZATION
+  tsParticles.load("tsparticles", {
+    fpsLimit: 60,
+    interactivity: {
+      events: {
+        onHover: { enable: true, mode: "grab" },
+        onClick: { enable: true, mode: "push" },
+        resize: true
+      },
+      modes: {
+        grab: { distance: 170, links: { opacity: 0.6 } },
+        push: { quantity: 3 }
+      }
+    },
+    particles: {
+      color: { value: "#e09f3e" },
+      links: {
+        color: "#e09f3e",
+        distance: 140,
+        enable: true,
+        opacity: 0.25,
+        width: 1
+      },
+      move: {
+        enable: true,
+        speed: 1.2,
+        direction: "none",
+        random: false,
+        straight: false,
+        outModes: { default: "bounce" }
+      },
+      number: {
+        density: { enable: true, area: 800 },
+        value: 65
+      },
+      opacity: { value: 0.4 },
+      shape: { type: "circle" },
+      size: { value: { min: 1, max: 3 } }
+    },
+    detectRetina: true
+  });
+</script>
+
+</body>
+</html>

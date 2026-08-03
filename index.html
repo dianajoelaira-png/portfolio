@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diana Joelaira | Home</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: #0d0e12;
+      color: #fff;
+      line-height: 1.6;
+      overflow-x: hidden;
+      transition: background-color 0.4s ease, color 0.4s ease;
+    }
+
+    #tsparticles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 1;
+      pointer-events: auto;
+    }
+
+    header, .hero, .section, footer {
+      position: relative;
+      z-index: 2;
+    }
+
+    header {
+      background: rgba(13, 14, 18, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+      border-bottom: 1px solid rgba(224, 159, 62, 0.15);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar {
+      max-width: 1200px;
+      margin: auto;
+      padding: 18px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: 700;
+      color: #e09f3e;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #e0e0e0;
+      font-weight: 500;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 0;
+      height: 3px;
+      background: #e09f3e;
+      border-radius: 10px;
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      width: 100%;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #e09f3e;
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    #darkModeBtn,
+    .menu-btn {
+      border: 1px solid rgba(224, 159, 62, 0.4);
+      background: rgba(224, 159, 62, 0.15);
+      color: #e09f3e;
+      padding: 8px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    #darkModeBtn:hover,
+    .menu-btn:hover {
+      background: #e09f3e;
+      color: #0d0e12;
+    }
+
+    .menu-btn {
+      display: none;
+    }
+
+    .hero.v2-centered-profile {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 4rem 2rem;
+      perspective: 1000px;
+    }
+
+    .hero-container.radial-layout {
+      display: grid;
+      grid-template-columns: 1fr 340px 1fr;
+      gap: 2.5rem;
+      align-items: center;
+      max-width: 1300px;
+      width: 100%;
+    }
+
+    .left-panel {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      text-align: right;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(224, 159, 62, 0.12);
+      color: #e09f3e;
+      border: 1px solid rgba(224, 159, 62, 0.3);
+      padding: 8px 16px;
+      border-radius: 30px;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 18px;
+      backdrop-filter: blur(8px);
+    }
+
+    .hero-title {
+      font-size: 2.5rem;
+      line-height: 1.2;
+      margin: 1rem 0 0.5rem 0;
+      font-weight: 700;
+    }
+
+    .hero-title span {
+      color: #e09f3e;
+    }
+
+    .animated-subtitle {
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.85);
+      margin-bottom: 1.5rem;
+      min-height: 1.8rem;
+    }
+
+    .typed-text {
+      color: #e09f3e;
+      font-weight: 600;
+    }
+
+    .cursor-blink {
+      display: inline-block;
+      width: 3px;
+      background-color: #e09f3e;
+      margin-left: 4px;
+      animation: blink 0.7s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    .stat-card {
+      display: flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 14px;
+      padding: 1rem 1.5rem;
+      border: 1px solid rgba(224, 159, 62, 0.25);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    }
+
+    .stat-icon {
+      font-size: 1.8rem;
+      color: #e09f3e;
+      margin-right: 1rem;
+    }
+
+    .stat-details h3 {
+      font-size: 2rem;
+      margin: 0;
+      color: #fff;
+    }
+
+    .stat-details p {
+      font-size: 0.85rem;
+      margin: 0;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    /* 3D PROFILE PHOTO STYLING */
+    .center-panel {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      transform-style: preserve-3d;
+    }
+
+    .profile-ring-3d {
+      position: absolute;
+      width: 310px;
+      height: 310px;
+      border-radius: 50%;
+      border: 2px dashed rgba(224, 159, 62, 0.4);
+      transform: translateZ(-20px);
+      animation: spin3D 18s linear infinite;
+      pointer-events: none;
+    }
+
+    .profile-frame-3d {
+      position: relative;
+      width: 270px;
+      height: 270px;
+      border-radius: 50%;
+      padding: 6px;
+      background: linear-gradient(135deg, rgba(224, 159, 62, 0.8), rgba(255, 255, 255, 0.1), rgba(224, 159, 62, 0.3));
+      box-shadow: 
+        0 15px 35px rgba(0, 0, 0, 0.6),
+        0 0 25px rgba(224, 159, 62, 0.3),
+        inset 0 0 15px rgba(255, 255, 255, 0.2);
+      transform-style: preserve-3d;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      cursor: pointer;
+    }
+
+    .profile-img-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      transform: translateZ(25px);
+      transition: transform 0.4s ease;
+    }
+
+    .profile-frame-3d:hover {
+      transform: rotateY(10deg) rotateX(-5deg) scale(1.05) translateZ(10px);
+      box-shadow: 
+        0 25px 45px rgba(0, 0, 0, 0.8),
+        0 0 45px rgba(224, 159, 62, 0.5);
+    }
+
+    .profile-frame-3d:hover .profile-img-inner {
+      transform: translateZ(40px) scale(1.02);
+    }
+
+    @keyframes spin3D {
+      0% { transform: translateZ(-20px) rotate(0deg); }
+      100% { transform: translateZ(-20px) rotate(360deg); }
+    }
+
+    .right-panel {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+    }
+
+    .passion-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .passion-header i {
+      font-size: 1.5rem;
+      color: #e09f3e;
+      margin-right: 0.8rem;
+    }
+
+    .passion-header h2 {
+      font-size: 1.6rem;
+      margin: 0;
+    }
+
+    .passion-text {
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .centered-buttons {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #e09f3e;
+      color: #0d0e12;
+      padding: 12px 24px;
+      border-radius: 10px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 600;
+      box-shadow: 0 4px 15px rgba(224, 159, 62, 0.3);
+    }
+
+    .btn.secondary {
+      background: transparent;
+      color: #e09f3e;
+      border: 2px solid #e09f3e;
+      box-shadow: none;
+    }
+
+    .btn:hover {
+      background: #c8892f;
+      color: #fff;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(224, 159, 62, 0.5);
+    }
+
+    .resume-btn {
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .resume-btn i {
+      margin-right: 8px;
+      color: #e09f3e;
+    }
+
+    /* GENERAL SECTION STYLING */
+    .section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 90px 20px;
+      text-align: center;
+    }
+
+    .section h2 {
+      font-size: 36px;
+      color: #e09f3e;
+      margin-bottom: 15px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .section-intro {
+      max-width: 800px;
+      margin: 0 auto 45px;
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 16px;
+    }
+
+    .card-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(224, 159, 62, 0.18);
+      border-radius: 20px;
+      padding: 35px 25px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, #e09f3e, transparent);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      border-color: rgba(224, 159, 62, 0.5);
+      box-shadow: 0 20px 40px rgba(224, 159, 62, 0.15);
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card-icon {
+      width: 70px;
+      height: 70px;
+      background: rgba(224, 159, 62, 0.12);
+      color: #e09f3e;
+      border: 1px solid rgba(224, 159, 62, 0.3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 22px;
+      font-size: 28px;
+      transition: transform 0.4s ease;
+    }
+
+    .card:hover .card-icon {
+      transform: scale(1.1) rotate(5deg);
+      background: #e09f3e;
+      color: #0d0e12;
+    }
+
+    .card h3 {
+      color: #fff;
+      margin-bottom: 12px;
+      font-size: 22px;
+      font-weight: 600;
+    }
+
+    .card p {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .highlight-section {
+      background: rgba(255, 255, 255, 0.015);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 30px;
+      margin-top: 40px;
+      margin-bottom: 40px;
+    }
+
+    .achievement-box {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .achievement-card {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 35px 25px;
+      border-radius: 20px;
+      border: 1px solid rgba(224, 159, 62, 0.2);
+      border-top: 5px solid #e09f3e;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      transition: all 0.4s ease;
+    }
+
+    .achievement-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 35px rgba(224, 159, 62, 0.2);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .achievement-card h3 {
+      font-size: 32px;
+      color: #e09f3e;
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    .achievement-card p {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 15px;
+    }
+
+    .interest-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .interest-list div {
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(224, 159, 62, 0.25);
+      padding: 14px 26px;
+      border-radius: 30px;
+      color: #e09f3e;
+      font-weight: 500;
+      font-size: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+      cursor: default;
+    }
+
+    .interest-list div:hover {
+      background: #e09f3e;
+      color: #0d0e12;
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(224, 159, 62, 0.4);
+    }
+
+    .cta {
+      background: linear-gradient(135deg, rgba(224, 159, 62, 0.2), rgba(13, 14, 18, 0.9));
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(224, 159, 62, 0.4);
+      color: white;
+      border-radius: 28px;
+      padding: 60px 30px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+    }
+
+    .cta h2 {
+      color: #fff;
+      margin-bottom: 15px;
+    }
+
+    .cta p {
+      max-width: 800px;
+      margin: 0 auto 30px;
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 17px;
+    }
+
+    .cta .btn {
+      background: #e09f3e;
+      color: #0d0e12;
+      font-weight: 700;
+      font-size: 16px;
+    }
+
+    footer {
+      text-align: center;
+      background: rgba(13, 14, 18, 0.95);
+      border-top: 1px solid rgba(224, 159, 62, 0.15);
+      color: rgba(255, 255, 255, 0.6);
+      padding: 25px;
+      margin-top: 60px;
+      font-size: 14px;
+    }
+
+    /* ====================================================
+       LIGHT MODE STYLING OVERRIDES
+       ==================================================== */
+    body.light-mode {
+      background-color: #f4f5f7 !important;
+      color: #1a1a1a !important;
+    }
+
+    body.light-mode header {
+      background: rgba(255, 255, 255, 0.85) !important;
+      border-bottom: 1px solid rgba(224, 159, 62, 0.3) !important;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
+    }
+
+    body.light-mode .nav-links a {
+      color: #333 !important;
+    }
+
+    body.light-mode .nav-links a.active,
+    body.light-mode .nav-links a:hover {
+      color: #e09f3e !important;
+    }
+
+    body.light-mode .card,
+    body.light-mode .stat-card,
+    body.light-mode .achievement-card,
+    body.light-mode .interest-list div {
+      background: rgba(255, 255, 255, 0.85) !important;
+      border-color: rgba(224, 159, 62, 0.35) !important;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06) !important;
+    }
+
+    body.light-mode .hero-title,
+    body.light-mode .stat-details h3,
+    body.light-mode .passion-header h2,
+    body.light-mode .card h3,
+    body.light-mode .cta h2 {
+      color: #111 !important;
+    }
+
+    body.light-mode .animated-subtitle,
+    body.light-mode .stat-details p,
+    body.light-mode .passion-text,
+    body.light-mode .section-intro,
+    body.light-mode .card p,
+    body.light-mode .achievement-card p,
+    body.light-mode .cta p {
+      color: #444 !important;
+    }
+
+    body.light-mode .resume-btn {
+      background: rgba(13, 14, 18, 0.08) !important;
+      color: #111 !important;
+      border-color: rgba(0, 0, 0, 0.2) !important;
+    }
+
+    body.light-mode .cta {
+      background: linear-gradient(135deg, rgba(224, 159, 62, 0.15), rgba(255, 255, 255, 0.9)) !important;
+    }
+
+    body.light-mode footer {
+      background: rgba(240, 240, 240, 0.95) !important;
+      color: #666 !important;
+    }
+
+    /* MEDIA QUERIES */
+    @media (max-width: 992px) {
+      .hero-container.radial-layout {
+        grid-template-columns: 1fr !important;
+        text-align: center;
+        gap: 2.5rem;
+      }
+
+      .left-panel, .right-panel {
+        align-items: center;
+        text-align: center;
+      }
+
+      .stat-card {
+        justify-content: center;
+      }
+
+      .centered-buttons {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .menu-btn {
+        display: block;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        background: rgba(13, 14, 18, 0.95);
+        backdrop-filter: blur(16px);
+        border: 1px solid rgba(224, 159, 62, 0.3);
+        width: 220px;
+        flex-direction: column;
+        padding: 20px;
+        border-radius: 14px;
+        display: none;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .card-container {
+        display: flex !important;
+        flex-direction: row !important;
+        overflow-x: auto !important;
+        scroll-snap-type: x mandatory;
+        gap: 15px !important;
+        padding: 10px 10px 25px 10px !important;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .card {
+        flex: 0 0 78% !important;
+        min-width: 78% !important;
+        max-width: 78% !important;
+        scroll-snap-align: center;
+        padding: 22px 15px !important;
+      }
+
+      .achievement-box {
+        display: flex !important;
+        flex-direction: row !important;
+        overflow-x: auto !important;
+        scroll-snap-type: x mandatory;
+        gap: 15px !important;
+        padding: 10px 10px 25px 10px !important;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .achievement-card {
+        flex: 0 0 72% !important;
+        min-width: 72% !important;
+        max-width: 72% !important;
+        scroll-snap-align: center;
+        padding: 22px 15px !important;
+      }
+
+      .card-container::-webkit-scrollbar,
+      .achievement-box::-webkit-scrollbar {
+        height: 4px;
+      }
+
+      .card-container::-webkit-scrollbar-thumb,
+      .achievement-box::-webkit-scrollbar-thumb {
+        background: rgba(224, 159, 62, 0.6);
+        border-radius: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+<div id="tsparticles"></div>
+
+<header>
+  <nav class="navbar">
+    <div class="logo">Diana Joelaira</div>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <button id="darkModeBtn">🌙</button>
+      <button class="menu-btn" id="menuBtn">☰</button>
+    </div>
+  </nav>
+</header>
+
+<section class="hero v2-centered-profile">
+  <div class="hero-container radial-layout">
+
+    <div class="hero-panel left-panel">
+      <div class="badge">
+        <i class="fas fa-star"></i> Personal Blog Portfolio
+      </div>
+      <h1 class="hero-title">Hello, I'm <br><span>Diana Joelaira</span></h1>
+      
+      <div class="animated-subtitle">
+        I am a <span class="typed-text" id="typedText"></span><span class="cursor-blink">&nbsp;</span>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon"><i class="fas fa-graduation-cap"></i></div>
+        <div class="stat-details">
+          <h3>3.68</h3>
+          <p>Current CGPA / 4.00</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-panel center-panel">
+      <div class="profile-ring-3d"></div>
+      <div class="profile-frame-3d">
+        <img src="images/pic2.png" alt="Diana Joelaira Center Profile" class="profile-img-inner">
+      </div>
+    </div>
+
+    <div class="hero-panel right-panel">
+      <div class="passion-header">
+        <i class="fas fa-fire"></i>
+        <h2>The Passion Behind the Development</h2>
+      </div>
+      
+      <p class="passion-text">
+        Passionate about software development and creating practical, user-friendly
+        digital solutions. Through academic and personal projects, I have developed
+        problem-solving, analytical, and system design skills while continuously
+        learning new ways to build meaningful applications.
+      </p>
+
+      <div class="hero-buttons centered-buttons">
+        <a href="about.html" class="btn">View My Work</a>
+        <a href="contact.html" class="btn secondary">Contact Me</a>
+        <a href="resume/Resume_NurDiana.pdf" class="btn resume-btn" target="_blank">
+          <i class="fas fa-file-pdf"></i> Resume
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section">
+  <h2>What I Can Do</h2>
+
+  <p class="section-intro">
+    I enjoy turning ideas into structured, functional, and user-friendly systems.
+    My work focuses on understanding user needs, designing clear solutions,
+    and improving digital experiences.
+  </p>
+
+  <div class="card-container">
+    <div class="card">
+      <div class="card-icon">
+        <i class="fas fa-lightbulb"></i>
+      </div>
+      <h3>Problem Solving</h3>
+      <p>
+        Analyze problems, identify suitable solutions, and apply logical thinking
+        to develop effective systems.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">
+        <i class="fas fa-laptop-code"></i>
+      </div>
+      <h3>System Development</h3>
+      <p>
+        Design and develop practical applications that support user tasks
+        and improve daily processes.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">
+        <i class="fas fa-users"></i>
+      </div>
+      <h3>User-Focused Design</h3>
+      <p>
+        Create clean, simple, and user-friendly interfaces that make systems
+        easier to understand and use.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section highlight-section">
+  <h2>Education & Achievements</h2>
+
+  <p class="section-intro">
+    My academic journey reflects dedication, consistency, and a strong commitment
+    to continuous learning and self-improvement.
+  </p>
+
+  <div class="achievement-box">
+    <div class="achievement-card">
+      <h3>4 Semester</h3>
+      <p>Dean's List Recognition</p>
+    </div>
+
+    <div class="achievement-card">
+      <h3>3.68</h3>
+      <p>Current CGPA / 4.00</p>
+    </div>
+
+    <div class="achievement-card">
+      <h3>UniSZA</h3>
+      <p>Universiti Sultan Zainal Abidin</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Areas of Interest</h2>
+
+  <p class="section-intro">
+    These are the areas that I am most interested in and continuously improving
+    through learning and project development.
+  </p>
+
+  <div class="interest-list">
+    <div>Software Development</div>
+    <div>Web Development</div>
+    <div>Database Systems</div>
+    <div>UI/UX Design</div>
+    <div>System Analysis</div>
+    <div>Application Development</div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="cta">
+    <h2>Let's Build Something Meaningful</h2>
+    <p>
+      I am always open to learning opportunities, collaboration, and practical
+      experiences that help me grow as a future software developer.
+    </p>
+
+    <a href="contact.html" class="btn">Get In Touch</a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Diana Joelaira. All Rights Reserved.</p>
+</footer>
+
+<script src="js/script.js"></script>
+
+<!-- tsParticles Library CDN -->
+<script src="https://cdn.jsdelivr.net/npm/tsparticles-slim@2.12.0/tsparticles.slim.bundle.min.js"></script>
+
+<script>
+  // 1. TYPING EFFECT
+  const words = ["Software Developer", "Web Developer", "UI/UX Designer"];
+  let wordIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+  const typedTextElement = document.getElementById("typedText");
+
+  function typeEffect() {
+    const currentWord = words[wordIndex];
+    
+    if (isDeleting) {
+      typedTextElement.textContent = currentWord.substring(0, charIndex - 1);
+      charIndex--;
+    } else {
+      typedTextElement.textContent = currentWord.substring(0, charIndex + 1);
+      charIndex++;
+    }
+
+    let typeSpeed = isDeleting ? 60 : 100;
+
+    if (!isDeleting && charIndex === currentWord.length) {
+      typeSpeed = 1800;
+      isDeleting = true;
+    } else if (isDeleting && charIndex === 0) {
+      isDeleting = false;
+      wordIndex = (wordIndex + 1) % words.length;
+      typeSpeed = 400;
+    }
+
+    setTimeout(typeEffect, typeSpeed);
+  }
+
+  document.addEventListener("DOMContentLoaded", typeEffect);
+
+  // 2. DARK / LIGHT MODE TOGGLE
+  const darkModeBtn = document.getElementById("darkModeBtn");
+  const menuBtn = document.getElementById("menuBtn");
+  const navLinks = document.getElementById("navLinks");
+
+  // Mobile Menu Toggle
+  if (menuBtn) {
+    menuBtn.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+  }
+
+  // Check saved theme in LocalStorage
+  if (localStorage.getItem("theme") === "light") {
+    document.body.classList.add("light-mode");
+    if (darkModeBtn) darkModeBtn.innerText = "☀️";
+  }
+
+  // Toggle button listener
+  if (darkModeBtn) {
+    darkModeBtn.addEventListener("click", () => {
+      document.body.classList.toggle("light-mode");
+
+      if (document.body.classList.contains("light-mode")) {
+        darkModeBtn.innerText = "☀️";
+        localStorage.setItem("theme", "light");
+      } else {
+        darkModeBtn.innerText = "🌙";
+        localStorage.setItem("theme", "dark");
+      }
+    });
+  }
+
+  // 3. TSPARTICLES INITIALIZATION
+  tsParticles.load("tsparticles", {
+    fpsLimit: 60,
+    interactivity: {
+      events: {
+        onHover: { enable: true, mode: "grab" },
+        onClick: { enable: true, mode: "push" },
+        resize: true
+      },
+      modes: {
+        grab: { distance: 170, links: { opacity: 0.6 } },
+        push: { quantity: 3 }
+      }
+    },
+    particles: {
+      color: { value: "#e09f3e" },
+      links: {
+        color: "#e09f3e",
+        distance: 140,
+        enable: true,
+        opacity: 0.25,
+        width: 1
+      },
+      move: {
+        enable: true,
+        speed: 1.2,
+        direction: "none",
+        random: false,
+        straight: false,
+        outModes: { default: "bounce" }
+      },
+      number: {
+        density: { enable: true, area: 800 },
+        value: 65
+      },
+      opacity: { value: 0.4 },
+      shape: { type: "circle" },
+      size: { value: { min: 1, max: 3 } }
+    },
+    detectRetina: true
+  });
+</script>
+
+</body>
+</html>
